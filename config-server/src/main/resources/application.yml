@@ -1,1 +1,20 @@
-spring.application.name=config-server
+spring:
+  profiles:
+    active: default
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/miguelshevchuk/HeroWatch/microservice-config.git
+          default-label: main
+          clone-on-start: true
+server:
+  port: 7777
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL}
