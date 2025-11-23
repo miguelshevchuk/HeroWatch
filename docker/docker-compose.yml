@@ -1,0 +1,14 @@
+services:
+  db_users:
+      image: postgres:16.1
+      container_name: db-users
+      restart: always
+      volumes:
+        - ./sql/create_schema_users.sql:/docker-entrypoint-initdb.d/create_schema_users.sql
+        - ./sql/data_users.sql:/docker-entrypoint-initdb.d/data_users.sql
+      environment:
+        POSTGRES_DB: 'usersc'
+        POSTGRES_USER: 'admin-gha'
+        POSTGRES_PASSWORD: 'adminGHA20181209'
+      ports:
+        - '9876:5432'
