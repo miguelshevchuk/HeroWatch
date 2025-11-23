@@ -15,8 +15,7 @@ public class AuthFilter implements GatewayFilter {
 
     private final WebClient webClient;
 
-//    @Value("${AUTH_VALIDATE_URI}")
-    @Value("http://localhost:8080")
+    @Value("${AUTH_VALIDATE_URI:http://localhost:3030/auth-server/auth/jwt}")
     private String AUTH_VALIDATE_URI;
     private static final String ACCESS_TOKEN_HEADER_NAME = "accessToken";
 
