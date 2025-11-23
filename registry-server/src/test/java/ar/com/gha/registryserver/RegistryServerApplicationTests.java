@@ -1,10 +1,10 @@
-package ar.com.gha.gatewaygha;
+package ar.com.gha.registryserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GatewayGhaApplicationTests {
+class RegistryServerApplicationTests {
 
     @Test
     void contextLoads() {

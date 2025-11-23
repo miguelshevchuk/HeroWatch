@@ -1,13 +1,13 @@
-package ar.com.gha.gatewaygha;
+package ar.com.gha.registryserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GatewayGhaApplication {
+public class RegistryServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewayGhaApplication.class, args);
+        SpringApplication.run(RegistryServerApplication.class, args);
     }
 
 }
