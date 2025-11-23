@@ -13,9 +13,9 @@ spring:
     username: ${db.username}
     url: ${db.url}
     driver-class-name: ${db.driver}
-    jpa:
-      show-sql: ${db.show-sql}
-      database-platform: ${db.platform:org.hibernate.dialect.PostgreSQLDialect}
+  jpa:
+    show-sql: ${db.show-sql}
+    database-platform: ${db.platform}
 springdoc:
   swagger-ui:
     operationsSorter: method
