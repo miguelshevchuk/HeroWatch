@@ -8,7 +8,7 @@ spring:
       server:
         git:
           uri: https://github.com/miguelshevchuk/HeroWatch.git
-          search-paths: microservice-config
+          search-paths: config
           default-label: main
           clone-on-start: true
 server:

@@ -15,7 +15,7 @@ spring:
     driver-class-name: ${db.driver}
     jpa:
       show-sql: ${db.show-sql}
-      database-platform: ${db.platform}
+      database-platform: ${db.platform:org.hibernate.dialect.PostgreSQLDialect}
 springdoc:
   swagger-ui:
     operationsSorter: method
@@ -46,4 +46,4 @@ eureka:
     instance-id: ${spring.application.name}:${random.int}
   client:
     service-url:
-      defaultZone: ${EUREKA_URL}
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}

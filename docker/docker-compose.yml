@@ -7,7 +7,7 @@ services:
         - ./sql/create_schema_users.sql:/docker-entrypoint-initdb.d/create_schema_users.sql
         - ./sql/data_users.sql:/docker-entrypoint-initdb.d/data_users.sql
       environment:
-        POSTGRES_DB: 'usersc'
+        POSTGRES_DB: 'users-gha'
         POSTGRES_USER: 'admin-gha'
         POSTGRES_PASSWORD: 'adminGHA20181209'
       ports:
