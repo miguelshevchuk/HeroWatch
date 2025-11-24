@@ -12,9 +12,9 @@ spring:
     password: ${db.password}
     username: ${db.username}
     url: ${db.url}
-    jpa:
-      show-sql: ${db.show-sql}
-      database-platform: ${db.platform}
+  jpa:
+    show-sql: ${db.show-sql}
+    database-platform: ${db.platform}
 springdoc:
   swagger-ui:
     operationsSorter: method

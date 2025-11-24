@@ -4,6 +4,6 @@ db:
   password: adminGHA20181209
   driver: org.postgresql.Driver
   username: admin-gha
-  url: jdbc:postgresql://localhost:9876/heroes-gha
+  url: jdbc:postgresql://localhost:5432/heroes-gha
   show-sql: 'true'
   platform: org.hibernate.dialect.PostgreSQLDialect
