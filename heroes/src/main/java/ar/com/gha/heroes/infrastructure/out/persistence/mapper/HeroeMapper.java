@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 
-@Mapper
+@Mapper(uses = {PoderMapper.class})
 public interface HeroeMapper extends GhaMapper<Heroe, HeroeEntity> {
 
     HeroeMapper INSTANCE = Mappers.getMapper(HeroeMapper.class);

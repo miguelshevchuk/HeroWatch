@@ -15,12 +15,20 @@ public class HeroeEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Integer id;
+
     private String alias;
+
+    @Column(name = "nombre_real")
     private String nombreReal;
-    private HeroeEstado estadp;
+
+    @Enumerated(EnumType.STRING)
+    private HeroeEstado estado;
+
+    @Column(name = "nivel_energia")
     private Integer nivelEnergia;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "heroe_id")
     private List<PoderEntity> poderes;
 
 }

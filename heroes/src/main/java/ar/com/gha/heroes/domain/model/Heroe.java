@@ -10,7 +10,7 @@ public class Heroe {
     private Integer id;
     private String alias;
     private String nombreReal;
-    private HeroeEstado estadp;
+    private HeroeEstado estado;
     private Integer nivelEnergia;
     private Iterable<Poder> poderes;
 
