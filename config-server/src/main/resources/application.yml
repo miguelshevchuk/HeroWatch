@@ -1,11 +1,14 @@
 spring:
   profiles:
     active: default
+    #active: native
   application:
     name: config-server
   cloud:
     config:
       server:
+        #native:
+          #search-locations: file:./config
         git:
           uri: https://github.com/miguelshevchuk/HeroWatch.git
           search-paths: config

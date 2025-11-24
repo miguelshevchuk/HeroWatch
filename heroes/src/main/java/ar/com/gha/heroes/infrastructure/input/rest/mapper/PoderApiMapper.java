@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface PoderApiMapper extends GhaMapper<Poder, PoderResponse> {
+public interface PoderApiMapper  extends GhaMapper<Poder, PoderResponse> {
     PoderApiMapper INSTANCE = Mappers.getMapper(PoderApiMapper.class);
+
 }

@@ -6,7 +6,10 @@ import ar.com.gha.mapperghastarter.infrastructure.GhaMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(uses = {PoderApiMapper.class})
 public interface HeroeApiMapper extends GhaMapper<Heroe, HeroeResponse> {
     HeroeApiMapper INSTANCE = Mappers.getMapper(HeroeApiMapper.class);
+
 }

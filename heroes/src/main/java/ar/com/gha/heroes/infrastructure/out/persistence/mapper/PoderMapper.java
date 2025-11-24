@@ -6,6 +6,8 @@ import ar.com.gha.mapperghastarter.infrastructure.GhaMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface PoderMapper extends GhaMapper<Poder, PoderEntity> {
 

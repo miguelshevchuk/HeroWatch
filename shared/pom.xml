@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
     <groupId>ar.com.gha</groupId>
     <artifactId>shared</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>shared</name>
     <description>shared</description>
     <modules>
