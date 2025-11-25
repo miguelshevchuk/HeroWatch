@@ -22,12 +22,12 @@ public class GatewayConfig {
         return builder
                 .routes()
                 .route(route -> route
-                        .path("/api/v1/heroes/**")
+                        .path("/api/v1/heroes-ms/**")
                         .filters(filter -> {
                             filter.filter(this.authFilter);
                             return filter;
                         })
-                        .uri("lb://heroes")
+                        .uri("lb://heroes-ms")
                 )
 //                .route(route -> route
 //                        .path("/report-ms/report/**")
