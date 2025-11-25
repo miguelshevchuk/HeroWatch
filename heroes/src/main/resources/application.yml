@@ -16,6 +16,15 @@ spring:
   jpa:
     show-sql: ${db.show-sql}
     database-platform: ${db.platform}
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: ${KAFKA_BROKERS:localhost:9092}
+      function:
+        bindings:
+          heroes-out-0:
+            destination: heroes
 springdoc:
   swagger-ui:
     operationsSorter: method
@@ -29,17 +38,18 @@ springdoc:
     path: /api-docs
 server:
   servlet:
-    context-path: /heroes
+    context-path: /api/v1/heroes
   port: 0
 management:
   endpoints:
     web:
       exposure:
-        include: env, health, info
+        include: health, info
 
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.int}
+    prefer-ip-address: true
   client:
     service-url:
       defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}

@@ -27,7 +27,7 @@ public class HeroeEntity implements Serializable {
     @Column(name = "nivel_energia")
     private Integer nivelEnergia;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "heroe_id")
     private List<PoderEntity> poderes;
 

@@ -10,6 +10,7 @@
         <module name="config-server" />
         <module name="registry-server" />
         <module name="mapper-gha-starter" />
+        <module name="heroes-ms" />
       </profile>
       <profile name="Annotation profile for heroes" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -32,6 +33,7 @@
       <module name="config-server" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="heroes" options="-parameters" />
+      <module name="heroes-ms" options="-parameters" />
       <module name="mapper-gha-starter" options="-parameters" />
       <module name="registry-server" options="-parameters" />
       <module name="shared" options="" />

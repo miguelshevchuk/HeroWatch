@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/heroes/pom.xml" />
         <option value="$PROJECT_DIR$/shared/pom.xml" />
         <option value="$PROJECT_DIR$/shared/mapper-gha-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/heroes-ms/pom.xml" />
       </list>
     </option>
   </component>

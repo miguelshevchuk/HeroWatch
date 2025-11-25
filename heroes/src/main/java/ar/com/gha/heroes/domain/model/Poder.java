@@ -1,5 +1,6 @@
 package ar.com.gha.heroes.domain.model;
 
+import ar.com.gha.heroes.domain.model.vo.PoderNombre;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,6 +9,6 @@ import lombok.Data;
 public class Poder {
 
     private Integer id;
-    private String poder;
+    private PoderNombre poder;
 
 }

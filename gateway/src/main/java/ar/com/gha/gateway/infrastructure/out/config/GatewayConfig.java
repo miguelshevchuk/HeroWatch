@@ -21,14 +21,14 @@ public class GatewayConfig {
     public RouteLocator routerLocatorOauth2(RouteLocatorBuilder builder){
         return builder
                 .routes()
-//                .route(route -> route
-//                        .path("/companies-crud/company/**")
-//                        .filters(filter -> {
-//                            filter.filter(this.authFilter);
-//                            return filter;
-//                        })
-//                        .uri("lb://companies-crud")
-//                )
+                .route(route -> route
+                        .path("/api/v1/heroes/**")
+                        .filters(filter -> {
+                            filter.filter(this.authFilter);
+                            return filter;
+                        })
+                        .uri("lb://heroes")
+                )
 //                .route(route -> route
 //                        .path("/report-ms/report/**")
 //                        .filters(filter -> filter.filter(this.authFilter))
@@ -39,10 +39,10 @@ public class GatewayConfig {
 //                        .filters(filter -> filter.filter(this.authFilter))
 //                        .uri("lb://companies-crud-fallback")
 //                )
-//                .route(route -> route
-//                        .path("/auth-server/auth/**")
-//                        .uri("lb://auth-server")
-//                )
+                .route(route -> route
+                        .path("/auth-server/auth/**")
+                        .uri("lb://auth-server")
+                )
                 .build();
     }
 
