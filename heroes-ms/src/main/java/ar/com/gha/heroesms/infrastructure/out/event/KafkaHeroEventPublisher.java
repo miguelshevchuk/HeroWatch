@@ -24,12 +24,12 @@ public class KafkaHeroEventPublisher implements HeroEventPublisher {
         try {
             String payload = objectMapper.writeValueAsString(event);
             var enviado = this.streamBridge.send(BINDING_NAME, payload);
-
+            
             if(!enviado){
                 log.error("Error publicando evento en {}", BINDING_NAME);
                 throw new RuntimeException("Error publicando evento");
             }
-
+            log.info("Evento publicado {}", payload);
         } catch (JsonProcessingException e) {
             log.error("Error serializando evento", e);
             throw new RuntimeException("Error serializando evento", e);
@@ -46,7 +46,7 @@ public class KafkaHeroEventPublisher implements HeroEventPublisher {
                 log.error("Error publicando evento en {}", BINDING_NAME);
                 throw new RuntimeException("Error publicando evento");
             }
-
+            log.info("Evento publicado {}", payload);
         } catch (JsonProcessingException e) {
             log.error("Error serializando evento", e);
             throw new RuntimeException("Error serializando evento", e);

@@ -18,13 +18,13 @@ spring:
     database-platform: ${db.platform}
   cloud:
     stream:
+      bindings:
+        heroes-out-0:
+          destination: heroes
       kafka:
         binder:
           brokers: ${KAFKA_BROKERS:localhost:9092}
-      function:
-        bindings:
-          heroes-out-0:
-            destination: heroes
+
 springdoc:
   swagger-ui:
     operationsSorter: method

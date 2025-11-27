@@ -1,6 +1,6 @@
 spring:
   application:
-    name: heroes-ms
+    name: audit-ms
   profiles:
     default: ${PROFILE:default}
   config:
@@ -17,14 +17,15 @@ spring:
     show-sql: ${db.show-sql}
     database-platform: ${db.platform}
   cloud:
+    function:
+      definition: heroes
     stream:
       kafka:
         binder:
           brokers: ${KAFKA_BROKERS:localhost:9092}
-      function:
-        bindings:
-          heroes-out-0:
-            destination: heroes
+      bindings:
+        heroes-in-0:
+          destination: heroes
 springdoc:
   swagger-ui:
     operationsSorter: method
@@ -38,7 +39,7 @@ springdoc:
     path: /api-docs
 server:
   servlet:
-    context-path: /api/v1/heroes-ms
+    context-path: /api/v1/audit-ms
   port: 0
 management:
   endpoints:
