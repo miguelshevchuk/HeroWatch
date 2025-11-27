@@ -30,6 +30,13 @@ public class HeroeRepositoryImpl implements HeroeRepository {
     }
 
     @Override
+    public Heroe update(Heroe heroe) {
+        HeroeEntity entity = HeroeMapper.INSTANCE.map(heroe);
+        HeroeEntity saved = heroeCrudRepository.save(entity);
+        return HeroeMapper.INSTANCE.toDomain(saved);
+    }
+
+    @Override
     public Optional<Heroe> findByAlias(String alias) {
         return heroeCrudRepository.findByAlias(alias).map(HeroeMapper.INSTANCE::toDomain);
     }

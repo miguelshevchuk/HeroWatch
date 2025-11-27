@@ -12,4 +12,6 @@ public interface HeroeRepository {
     Heroe save(Heroe heroe);
 
     Optional<Heroe> findByAlias(String alias);
+
+    Heroe update(Heroe heroe);
 }

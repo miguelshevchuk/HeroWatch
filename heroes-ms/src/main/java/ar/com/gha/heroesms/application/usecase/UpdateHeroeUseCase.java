@@ -1,13 +1,12 @@
 package ar.com.gha.heroesms.application.usecase;
 
-
-import ar.com.gha.heroesms.domain.command.CreateHeroeCommand;
+import ar.com.gha.heroesms.domain.command.UpdateHeroeCommand;
 import ar.com.gha.heroesms.domain.event.HeroEvent;
 import ar.com.gha.heroesms.domain.model.Heroe;
 import ar.com.gha.heroesms.domain.port.HeroEventPublisher;
 import ar.com.gha.heroesms.domain.port.HeroeRepository;
-import ar.com.gha.heroesms.infrastructure.input.rest.exception.DuplicateAliasException;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
@@ -15,19 +14,22 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
-public class CreateHeroeUseCase {
+@Service
+public class UpdateHeroeUseCase {
 
     private final HeroeRepository heroeRepository;
     private final HeroEventPublisher eventPublisher;
 
-    public Heroe execute(CreateHeroeCommand cmd) {
+    public Heroe execute(UpdateHeroeCommand cmd) {
+
         if (cmd == null) throw new IllegalArgumentException("Command requerido");
 
-        this.heroeRepository.findByAlias(cmd.alias()).ifPresent(h -> {
-            throw new DuplicateAliasException("El alias ya existe: " + cmd.alias());
-        });
+        heroeRepository.findByAlias(cmd.alias()).orElseThrow(
+                () -> new IllegalArgumentException("No existe el heroe con el alias: " + cmd.alias())
+        );
 
-        Heroe toCreate = Heroe.create(
+        Heroe heroe = Heroe.create(
+                cmd.id(),
                 cmd.alias(),
                 cmd.nombreReal(),
                 cmd.estado(),
@@ -35,7 +37,7 @@ public class CreateHeroeUseCase {
                 cmd.poderes()
         );
 
-        Heroe saved = heroeRepository.save(toCreate);
+        Heroe saved = heroeRepository.update(heroe);
 
         List<String> poderes = saved.getPoderes() == null ? null :
                 StreamSupport.stream(saved.getPoderes().spliterator(), false)
@@ -50,9 +52,11 @@ public class CreateHeroeUseCase {
                 saved.getNivelEnergia() == null ? null : saved.getNivelEnergia().value(),
                 poderes,
                 Instant.now(),
-                EVENT_TYPE.HERO_CREATED.name()
+                EVENT_TYPE.HERO_UPDATED.name()
         );
-        eventPublisher.publishHeroCreated(event);
+        eventPublisher.publishHeroUpdated(event);
+
         return saved;
     }
+
 }

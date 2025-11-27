@@ -25,6 +25,19 @@ services:
         POSTGRES_PASSWORD: 'adminGHA20181209'
       ports:
         - '5432:5432'
+  db_audit:
+      image: postgres:16.1
+      container_name: db-audit
+      restart: always
+      volumes:
+        - ./sql/create_schema_audit.sql:/docker-entrypoint-initdb.d/create_schema_audit.sql
+        - ./sql/data_audit.sql:/docker-entrypoint-initdb.d/data_audit.sql
+      environment:
+        POSTGRES_DB: 'audit-gha'
+        POSTGRES_USER: 'admin-gha'
+        POSTGRES_PASSWORD: 'adminGHA20181209'
+      ports:
+        - '5431:5432'
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.3
     container_name: load-balancer

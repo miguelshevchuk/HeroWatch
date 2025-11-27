@@ -3,12 +3,13 @@ package ar.com.gha.heroesms.domain.event;
 import java.time.Instant;
 import java.util.List;
 
-public record HeroCreatedEvent(
+public record HeroEvent(
         Integer id,
         String alias,
         String nombreReal,
         String estado,
         Integer nivelEnergia,
         List<String> poderes,
-        Instant timestamp
+        Instant timestamp,
+        String evento
 ) {}
