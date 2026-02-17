@@ -5,7 +5,10 @@ resources:
   - deployment.yaml
   - service.yaml
   - configmap.yaml
+  - secret.yaml
 
-commonLabels:
-  app.kubernetes.io/part-of: herowatch
-  app.kubernetes.io/managed-by: kustomize
+labels:
+  - pairs:
+      part-of: herowatch
+      managed-by: kustomize
+      app: heroes-ms

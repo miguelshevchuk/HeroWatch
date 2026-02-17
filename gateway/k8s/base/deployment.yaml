@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: heroWatch/gateway:v3
+          image: heroWatch/gateway:v4
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -52,22 +52,6 @@ spec:
                 configMapKeyRef:
                   name: gateway-config
                   key: MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: http
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 2
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health/liveness
-              port: http
-            initialDelaySeconds: 20
-            periodSeconds: 20
-            timeoutSeconds: 2
-            failureThreshold: 3
           resources:
             requests:
               cpu: "200m"

@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: heroes-ms
-          image: ghcr.io/example/heroes-ms:latest
+          image: heroWatch/heroes-ms:v1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -26,22 +26,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: heroes-ms-config
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 2
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 30
-            periodSeconds: 20
-            timeoutSeconds: 2
-            failureThreshold: 3
+            - secretRef:
+                name: heroes-ms-secrets
           resources:
             requests:
               cpu: 100m

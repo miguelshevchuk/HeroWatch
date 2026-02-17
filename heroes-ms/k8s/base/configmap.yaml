@@ -8,20 +8,12 @@ metadata:
 data:
   # Spring profile and external config server
   PROFILE: dev
-  CONFIG_URL: http://config-server.config:7777
-
-  # Service discovery (Eureka)
-  EUREKA_URL: http://registry-server.registry:8761/eureka
-
   # Kafka
-  KAFKA_BROKERS: localhost:9092
-
-  # Database (example uses Postgres)
-  db.driver: org.postgresql.Driver
-  db.url: jdbc:postgresql://postgres.database:5432/heroes
-  db.username: heroes_user
-  db.password: heroes_pass
-  db.platform: org.hibernate.dialect.PostgreSQLDialect
-  db.show-sql: "false"
-  db.connection-timeout: "30000"
-  db.maximum-pool-size: "10"
+  KAFKA_BROKERS: host.docker.internal:9092
+  MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"
+  DB_MAXIMUN_POOL_SIZE: "5"
+  DB_CONNECTION_TIME_OUT: "20000"
+  DB_URL: "jdbc:postgresql://host.docker.internal:9876/users-gha"
+  DB_DRIVER: "org.postgresql.Driver"
+  DB_SHOW_SQL: "true"
+  DB_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
