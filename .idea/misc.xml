@@ -13,10 +13,12 @@
         <option value="$PROJECT_DIR$/shared/mapper-gha-starter/pom.xml" />
         <option value="$PROJECT_DIR$/heroes-ms/pom.xml" />
         <option value="$PROJECT_DIR$/audit-ms/pom.xml" />
+        <option value="$PROJECT_DIR$/shared/crypto-gha-starter/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/config-server/pom.xml" />
         <option value="$PROJECT_DIR$/heroes/pom.xml" />
       </set>
     </option>

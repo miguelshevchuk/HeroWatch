@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/HeroWatch.iml" filepath="$PROJECT_DIR$/.idea/HeroWatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/registry-server/registry-server.iml" filepath="$PROJECT_DIR$/registry-server/registry-server.iml" />
     </modules>
   </component>
 </project>

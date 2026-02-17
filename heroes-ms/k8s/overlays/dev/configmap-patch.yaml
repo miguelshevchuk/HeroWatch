@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: heroes-ms-config
+data:
+  PROFILE: dev
+  CONFIG_URL: http://config-server:7777
+  EUREKA_URL: http://registry-server:8761/eureka
+  KAFKA_BROKERS: kafka:9092
+  db.url: jdbc:postgresql://postgres:5432/heroes_dev
+  db.username: heroes_user
+  db.password: heroes_pass
+  db.show-sql: "true"

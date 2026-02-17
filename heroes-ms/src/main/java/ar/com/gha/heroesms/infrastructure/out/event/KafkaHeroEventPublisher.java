@@ -24,7 +24,7 @@ public class KafkaHeroEventPublisher implements HeroEventPublisher {
         try {
             String payload = objectMapper.writeValueAsString(event);
             var enviado = this.streamBridge.send(BINDING_NAME, payload);
-            
+
             if(!enviado){
                 log.error("Error publicando evento en {}", BINDING_NAME);
                 throw new RuntimeException("Error publicando evento");

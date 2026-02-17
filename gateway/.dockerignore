@@ -1,0 +1,20 @@
+# Maven build output
+/target
+
+# Maven local repo caches (if any copied)
+.m2
+
+# IDE files
+.idea
+.project
+.classpath
+.settings/
+*.iml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore

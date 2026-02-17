@@ -3,19 +3,17 @@ spring:
     name: auth-server
   profiles:
     default: ${PROFILE:default}
-  config:
-    import: "optional:configserver:${CONFIG_URL:http://localhost:7777}"
   datasource:
     hikari:
-      maximum-pool-size: ${db.maximum-pool-size}
-      connection-timeout: ${db.connection-timeout}
-    password: ${db.password}
-    username: ${db.username}
-    url: ${db.url}
-    driver-class-name: ${db.driver}
+      maximum-pool-size: ${DB_MAXIMUN_POOL_SIZE:5}
+      connection-timeout: ${DB_CONNECTION_TIME_OUT:20000}
+    password: ENC(${DB_PASSWORD:e9D9H5TC8CyjVIDNc6yX2ggOw4tj/HB+he26s7cSsa3+XFVWQcw0HynQTyU=})
+    username: ENC(${DB_USERNAME:9KhabgYtaneboQDOuyWs4koh4mpMDthYQZa9O60Qhnj/Mel+DQ==})
+    url: ${DB_URL:jdbc:postgresql://localhost:9876/users-gha}
+    driver-class-name: ${DB_DRIVER:org.postgresql.Driver}
   jpa:
-    show-sql: ${db.show-sql}
-    database-platform: ${db.platform}
+    show-sql: ${DB_SHOW_SQL:true}
+    database-platform: ${DB_PLATFORM:org.hibernate.dialect.PostgreSQLDialect}
 springdoc:
   swagger-ui:
     operationsSorter: method
@@ -36,15 +34,14 @@ logging:
             sql:
               BasicBinder: TRACE
         SQL: DEBUG
+application:
+  jwt:
+    secret: ENC(${JWT_SECRET:y1+yTFacACI6DUSElqE0XdnBE8cneo27p1B0U7WSe2wvlUWvlAkzvxSyUSuO9Pp8+r0GWTRG/XFqo0wVm7U/B2mCT2tJHRcFeIjHuN3DiVxeU9daB37h6STpUh0=})
+gha:
+  crypto:
+    aesKey: ${AES_KEY:kZ6F1Zy0ZQ4n0t9J2wE2R+q+f0nGmJ0r1Yx7G2kLw6A=}
 server:
   servlet:
     context-path: /auth-server
-  port: 3030
+  port: ${SERVER_PORT:3030}
 
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${random.int}
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}

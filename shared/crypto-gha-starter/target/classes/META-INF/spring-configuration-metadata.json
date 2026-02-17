@@ -1,0 +1,21 @@
+{
+  "groups": [
+    {
+      "name": "gha.crypto",
+      "type": "ar.com.gha.cryptoghastarter.infrastructure.config.CryptoProperties",
+      "sourceType": "ar.com.gha.cryptoghastarter.infrastructure.config.CryptoProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "gha.crypto.aes-key",
+      "type": "java.lang.String",
+      "description": "Base64-encoded AES key. Recommended size: 256 bits (32 bytes after Base64 decoding).",
+      "sourceType": "ar.com.gha.cryptoghastarter.infrastructure.config.CryptoProperties"
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}

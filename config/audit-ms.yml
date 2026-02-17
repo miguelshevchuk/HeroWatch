@@ -1,9 +1,0 @@
-db:
-  connection-timeout: 20000
-  maximum-pool-size: 5
-  password: adminGHA20181209
-  driver: org.postgresql.Driver
-  username: admin-gha
-  url: jdbc:postgresql://localhost:5431/audit-gha
-  show-sql: 'true'
-  platform: org.hibernate.dialect.PostgreSQLDialect

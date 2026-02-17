@@ -1,20 +1,24 @@
 package ar.com.gha.gateway.infrastructure.out.config;
 
 import ar.com.gha.gateway.infrastructure.in.filters.AuthFilter;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import java.util.Set;
 
 @Configuration
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class GatewayConfig {
 
     private final AuthFilter authFilter;
+    @Value("${gateway.auth.auth-server-uri}")
+    private String AUTH_VALIDATE_URI;
+    @Value("${gateway.services.heroes-ms-uri}")
+    private String HEROES_MS_URI;
 
     @Bean
     @Profile(value="oauth2")
@@ -27,7 +31,7 @@ public class GatewayConfig {
                             filter.filter(this.authFilter);
                             return filter;
                         })
-                        .uri("lb://heroes-ms")
+                        .uri(HEROES_MS_URI)
                 )
 //                .route(route -> route
 //                        .path("/report-ms/report/**")
@@ -41,7 +45,7 @@ public class GatewayConfig {
 //                )
                 .route(route -> route
                         .path("/auth-server/auth/**")
-                        .uri("lb://auth-server")
+                        .uri(AUTH_VALIDATE_URI)
                 )
                 .build();
     }

@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-server
+  labels:
+    app.kubernetes.io/name: auth-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: auth-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: auth-server
+    spec:
+      containers:
+        - name: auth-server
+          image: heroWatch/auth-server:v7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3030
+          envFrom:
+            - secretRef:
+                name: auth-server-secrets
+          env:
+            - name: PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: PROFILE
+            - name: SERVER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: SERVER_PORT
+            - name: JAVA_OPTS
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: JAVA_OPTS
+            - name: MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED
+            - name: DB_MAXIMUN_POOL_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: DB_MAXIMUN_POOL_SIZE
+            - name: DB_CONNECTION_TIME_OUT
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: DB_CONNECTION_TIME_OUT
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: DB_URL
+            - name: DB_DRIVER
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: DB_DRIVER
+            - name: DB_SHOW_SQL
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: DB_SHOW_SQL
+            - name: DB_PLATFORM
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-server-config
+                  key: DB_PLATFORM
+          readinessProbe:
+            httpGet:
+              path: /auth-server/actuator/health/readiness
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /auth-server/actuator/health/liveness
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "150m"
+              memory: "256Mi"
+            limits:
+              cpu: "250m"
+              memory: "512Mi"

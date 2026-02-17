@@ -5,8 +5,8 @@ spring:
     name: gateway
 server:
   port: 4040
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
-    fetch-registry: true
+gateway:
+  auth:
+    auth-server-uri: ${AUTH_VALIDATE_URI:http://localhost:3030/auth-server/auth/jwt}
+  services:
+    heroes-ms-uri: ${HEROES_MS_URI:http://localhost:8080}

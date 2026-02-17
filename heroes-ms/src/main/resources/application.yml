@@ -39,7 +39,7 @@ springdoc:
 server:
   servlet:
     context-path: /api/v1/heroes-ms
-  port: 0
+  port: 8080
 management:
   endpoints:
     web:

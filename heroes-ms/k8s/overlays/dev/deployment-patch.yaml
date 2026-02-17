@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heroes-ms
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: heroes-ms
+          image: ghcr.io/example/heroes-ms:dev
+          env:
+            - name: PROFILE
+              value: dev
+            - name: CONFIG_URL
+              value: http://config-server:7777
+            - name: EUREKA_URL
+              value: http://registry-server:8761/eureka

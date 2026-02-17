@@ -16,6 +16,7 @@
     <description>shared</description>
     <modules>
         <module>mapper-gha-starter</module>
+        <module>crypto-gha-starter</module>
     </modules>
     <properties>
         <java.version>21</java.version>
