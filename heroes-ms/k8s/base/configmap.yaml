@@ -13,7 +13,7 @@ data:
   MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"
   DB_MAXIMUN_POOL_SIZE: "5"
   DB_CONNECTION_TIME_OUT: "20000"
-  DB_URL: "jdbc:postgresql://host.docker.internal:9876/users-gha"
+  DB_URL: "jdbc:postgresql://host.docker.internal:5432/heroes-gha"
   DB_DRIVER: "org.postgresql.Driver"
   DB_SHOW_SQL: "true"
   DB_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"

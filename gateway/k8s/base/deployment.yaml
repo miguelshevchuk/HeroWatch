@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: heroWatch/gateway:v4
+          image: heroWatch/gateway:v5
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -37,11 +37,11 @@ spec:
                 configMapKeyRef:
                   name: gateway-config
                   key: JAVA_OPTS
-            - name: HEROES-MS-URI
+            - name: HEROES_MS_URI
               valueFrom:
                 configMapKeyRef:
                   name: gateway-config
-                  key: HEROES-MS-URI
+                  key: HEROES_MS_URI
             - name: AUTH_VALIDATE_URI
               valueFrom:
                 configMapKeyRef:

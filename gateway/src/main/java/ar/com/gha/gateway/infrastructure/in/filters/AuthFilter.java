@@ -39,7 +39,7 @@ public class AuthFilter implements GatewayFilter {
 
         return this.webClient
                 .post()
-                .uri(AUTH_VALIDATE_URI+"/auth/jwt")
+                .uri(AUTH_VALIDATE_URI+"/auth-server/auth/jwt")
                 .header(ACCESS_TOKEN_HEADER_NAME, tokenHeader)
                 .retrieve()
                 .bodyToMono(Token.class)

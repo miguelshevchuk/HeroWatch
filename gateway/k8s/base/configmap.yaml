@@ -13,5 +13,5 @@ data:
   MANAGEMENT_HEALTH_PROBES_ENABLED: "true"
   MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"
   # When running in cluster, discover the registry-server by service name
-  HEROES-MS-URI: "http://heroes-ms"
+  HEROES_MS_URI: "http://heroes-ms"
   AUTH_VALIDATE_URI: "http://auth-server"
